@@ -1,5 +1,4 @@
 # Dotfiles
----
 ## Vim
 Find my Vim configuration with its dotfile and list of plugins.
 ## Oh-My-Zsh
