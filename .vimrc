@@ -78,12 +78,14 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 "==================
 "| TAB SETTINGS:  |
 "==================
-set tabstop=8
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 " Sets the softtabsize to 2 for HTML Files
 " This should make tabs expand to 2 spaces 
+autocmd Filetype html setlocal tabstop=2
+autocmd Filetype html setlocal shiftwidth=2
 autocmd Filetype html setlocal softtabstop=2
 
 "====================
@@ -98,7 +100,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " CtrlP will set its local working directory according to this:
 " 'a' - the directory of the current file, unless it is a subdirectory of the cwd 
 " 'r' - the nearest ancestor of the current file that contains one of these directories or files: .git .hg .svn .bzr _darcs
-let g:ctrlp_working_path_mode = 'ra' 
+" let g:ctrlp_working_path_mode = 'ra' 
 " Open new files in a new pane
 let g:ctrlp_switch_buffer = 'et'
 "------------------
