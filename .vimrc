@@ -113,6 +113,15 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Maps Ctrl+n to open NERDTree:
 map <C-n> :NERDTreeToggle<CR>
+"--------------------
+"| 3. NERDCommenter |
+"--------------------
+filetype plugin on
+"-------------------
+"| 4. GitGutter:   |
+"------------------
+" To set the delay in tracking changes to 100ms
+set updatetime = 100
 
 " I have Indent Lines but it has no settings to tinker with as I'm okay with its defaults.
 
