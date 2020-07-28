@@ -89,6 +89,18 @@ autocmd Filetype html setlocal shiftwidth=2
 autocmd Filetype html setlocal softtabstop=2
 
 "====================
+"| THEME SETTINGS:  |
+"====================
+"--------------------
+"| 1. Gruvbox:      |
+"--------------------
+" Gruvbox theme settings:
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_light = 'hard' 
+colorscheme gruvbox
+" To toggle between the light theme and the dark theme, simply do :set background=light/dark
+
+"====================
 "| PLUGIN SETTINGS: |
 "====================
 "-------------------
@@ -113,25 +125,31 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Maps Ctrl+n to open NERDTree:
 map <C-n> :NERDTreeToggle<CR>
-"--------------------
-"| 3. NERDCommenter |
-"--------------------
-filetype plugin on
-"-------------------
-"| 4. GitGutter:   |
-"------------------
+" --------------------
+" | 3. VIMCommentary |
+" --------------------
+" In case of any incompatible files: Simply add below [autocmd Filetype <that file> setlocal commentstring=#\ %s]
+" -------------------
+" | 4. GitGutter:   |
+" ------------------
 " To set the delay in tracking changes to 100ms
-set updatetime = 100
-
+set updatetime=100
+" --------------------
+" | 5. Lightline:    |
+" --------------------
+" Removes the redundant vim label of current mode
+set noshowmode
+" My Lightline config:
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 " I have Indent Lines but it has no settings to tinker with as I'm okay with its defaults.
 
 
-"====================
-"| THEME SETTINGS:  |
-"====================
-"--------------------
-"| 1. Gruvbox:      |
-"--------------------
-" Gruvbox theme settings:
-autocmd vimenter * colorscheme gruvbox
-" To toggle between the light theme and the dark theme, simply do :set background=light/dark
