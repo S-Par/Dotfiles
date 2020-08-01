@@ -94,6 +94,8 @@ autocmd Filetype html setlocal softtabstop=2
 "--------------------
 "| 1. Gruvbox:      |
 "--------------------
+" Enable true color support
+set termguicolors
 " Gruvbox theme settings:
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_contrast_light = 'hard' 
