@@ -34,3 +34,9 @@
 [submodule "vim/pack/vendor/start/nerdtree"]
 	path = vim/pack/vendor/start/nerdtree
 	url = https://github.com/preservim/nerdtree
+[submodule "vim/pack/default/start/ayu-vim"]
+	path = vim/pack/default/start/ayu-vim
+	url = https://github.com/ayu-theme/ayu-vim
+[submodule "vim/pack/vendor/start/coc.nvim-release"]
+	path = vim/pack/vendor/start/coc.nvim-release
+	url = https://github.com/neoclide/coc.nvim
