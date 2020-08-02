@@ -91,16 +91,16 @@ autocmd Filetype html setlocal softtabstop=2
 "====================
 "| THEME SETTINGS:  |
 "====================
+" Enable true color support
+set termguicolors
 "--------------------
 "| 1. Gruvbox:      |
 "--------------------
-" Enable true color support
-set termguicolors
 " Gruvbox theme settings:
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_contrast_light = 'hard' 
-colorscheme gruvbox
-" To toggle between the light theme and the dark theme, simply do :set background=light/dark
+" use a better vertsplit char
+set fillchars+=vert:│
 
 "====================
 "| PLUGIN SETTINGS: |
@@ -117,6 +117,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " let g:ctrlp_working_path_mode = 'ra' 
 " Open new files in a new pane
 let g:ctrlp_switch_buffer = 'et'
+
 "------------------
 "| 2. NERDTree:   |
 "------------------
@@ -127,15 +128,22 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Maps Ctrl+n to open NERDTree:
 map <C-n> :NERDTreeToggle<CR>
+
 " --------------------
 " | 3. VIMCommentary |
 " --------------------
 " In case of any incompatible files: Simply add below [autocmd Filetype <that file> setlocal commentstring=#\ %s]
+" Vimscript comments:
+autocmd Filetype vimscript setlocal commentstring=\"\ %s
+" Python comments:
+autocmd Filetype python setlocal commentstring=#\ %s
+
 " -------------------
 " | 4. GitGutter:   |
 " ------------------
 " To set the delay in tracking changes to 100ms
 set updatetime=100
+
 " --------------------
 " | 5. Lightline:    |
 " --------------------
@@ -146,12 +154,47 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+      \             [ 'cocstatus', 'readonly' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \ },
+      \ 'component_func': {
+      \   'cocstatus': 'coc#status'
+      \ },
       \ }
+
+" -------------------
+" | 6. CoC.NVIM:    |
+" -------------------
+" Better display for messages
+set cmdheight=2
+" Use Tab and S-Tab to navigate the completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Use <cr> to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" To make <cr> select the first completion item and confirm the completion when no item has been selected:
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" Close the preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
 " I have Indent Lines but it has no settings to tinker with as I'm okay with its defaults.
+
+"--------------------------------
+" Theme Switching based on time:
+"--------------------------------
+if strftime("%H") < 18 
+    let ayucolor="light"
+    let g:lightline.colorscheme='ayu_light'
+    colorscheme ayu
+else
+    set background=dark
+    " I have equinusocio_material in pack/*/opt solely for the lightline theme so I add it on demand
+    packadd! equinusocio-material.vim
+    let g:lightline.colorscheme='equinusocio_material'
+    colorscheme gruvbox
+endif
 
 
