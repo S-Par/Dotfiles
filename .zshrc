@@ -1,103 +1,126 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/siddharthparmar/.oh-my-zsh"
+export ZSH="/Users/sidparmar/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+# Pyenv:
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # Set TERM to allow colored lightline:
 export TERM=xterm-256color
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $random_theme
+# see https://github.com/ohmyzsh/ohmyzsh/wiki/themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# set list of themes to pick from when loading at random
+# setting this variable when zsh_theme=random will cause zsh to load
+# a theme from this variable instead of looking in $zsh/themes/
+# if set to an empty array, this variable will have no effect.
+# zsh_theme_random_candidates=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# uncomment the following line to use case-sensitive completion.
+# case_sensitive="true"
 
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# uncomment the following line to use hyphen-insensitive completion.
+# case-sensitive completion must be off. _ and - will be interchangeable.
+# hyphen_insensitive="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# uncomment the following line to disable bi-weekly auto-update checks.
+# disable_auto_update="true"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+# uncomment the following line to automatically update without prompting.
+# disable_update_prompt="true"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# uncomment the following line to change how often to auto-update (in days).
+# export update_zsh_days=13
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# uncomment the following line if pasting urls and other text is messed up.
+# disable_magic_functions="true"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# uncomment the following line to disable colors in ls.
+# disable_ls_colors="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+# uncomment the following line to disable auto-setting terminal title.
+# disable_auto_title="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
+# uncomment the following line to enable command auto-correction.
+# enable_correction="true"
+
+# uncomment the following line to display red dots whilst waiting for completion.
+# completion_waiting_dots="true"
+
+# uncomment the following line if you want to disable marking untracked files
+# under vcs as dirty. this makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# disable_untracked_files_dirty="true"
 
-# Uncomment the following line if you want to change the command execution time
+# uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# You can set one of the optional three formats:
+# you can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+# hist_stamps="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# would you like to use another custom folder than $zsh/custom?
+# zsh_custom=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git pyenv osx zsh-autosuggestions colored-man-pages python pip zsh-syntax-highlighting)
+# which plugins would you like to load?
+# standard plugins can be found in $zsh/plugins/
+# custom plugins may be added to $zsh_custom/plugins/
+# example format: plugins=(rails git textmate ruby lighthouse)
+# add wisely, as too many plugins slow down shell startup.
+plugins=(git pyenv macos zsh-autosuggestions colored-man-pages python pip zsh-syntax-highlighting thefuck)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# user configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# export manpath="/usr/local/man:$manpath"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# you may need to manually set your language environment
+# export lang=en_us.utf-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+# preferred editor for local and remote sessions
+# if [[ -n $ssh_connection ]]; then
+#   export editor='vim'
 # else
-#   export EDITOR='mvim'
+#   export editor='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# compilation flags
+# export archflags="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+# set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the zsh_custom folder.
+# for a full list of active aliases, run `alias`.
 #
-# Example aliases
+# example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export nvm_dir="$home/.nvm"
+[ -s "$nvm_dir/nvm.sh" ] && \. "$nvm_dir/nvm.sh"  # this loads nvm
+[ -s "$nvm_dir/bash_completion" ] && \. "$nvm_dir/bash_completion"  # this loads nvm bash_completion
+
+
+source ~/.nvm/nvm.sh
+source "/users/sidparmar/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+
+# Adds SML to the path
+export PATH=/usr/local/smlnj/bin:"$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
